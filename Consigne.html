@@ -1,0 +1,14 @@
+Memory consigne:
+1) tirer 8 cartes parmis les 15 dispos
+2) Ne pas tirer la carte 14 qui sert de dos aux cartes retournées
+3) Doubler chaque images
+4) Mélanger le tableau
+
+Interface:
+1) page de connexion ou l'on indique un pseudo -> si inexistant, on créer un nouveau pseudo
+2) page d'affichage du mémory
+	-on affiche les 16 images sur un caré 4x4 initialisées avec l'image 14
+	-on affiche le nombre de tour de la partie initialisé à zéro
+3) lors du clique sur une carte, elle se retourne.
+4) lors du clique sur une second carte on incrémente le nombre de tour, elle se retourne. Si les deux cartes sont égales, on les gardes retournées. Si elles ne sont pas égales, les deux cartes restent visible 2 secondes et se retourne.
+5) Une fois que toutes les cartes ont été retournées, on enregistre la partie avec le pseudo et le nombre de tour que l'utilisateur à fait puis on réinitialise le mémory avec un nouveau jeu.
