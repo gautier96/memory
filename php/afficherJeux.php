@@ -1,5 +1,8 @@
 <?php
-
+//Verifie si la session a été démarrée et la démarre si réponse = non
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once(dirname(__FILE__) . '../../global.php');
 
 use memory\Entity\Choisir;
@@ -20,12 +23,15 @@ shuffle($mesImages);
 //var_dump($mesImages);
 //Je créer un tableau de 16 images
 $tab16Images = [];
+//Un tableau pour stocker les images choisies
+$_SESSION["imagesChoisies"] = [];
 //Je remplis mon tableau avec 8 images chacune y étant deux fois = 16 images
 $indice1 = 0;
 $indice2 = 1;
 for ($i = 0; $i < 8; $i++) {
         $tab16Images[$indice1] = $mesImages[$i];
         $tab16Images[$indice2] = $mesImages[$i];
+        $_SESSION["imagesChoisies"][$i] = $mesImages[$i];
         $indice1 = $indice1+2;
         $indice2 = $indice2+2;
 }
@@ -54,18 +60,3 @@ for($row = 0; $row < 4; $row++){
 echo "</table>";
 echo "</div>";
 echo 'Nombre de tour <input id="nbrTour" type="texte" value="0" readonly>';
-//$cmptIndice = 0;
-//echo '<div style="display: none">';
-//echo "<table>";
-//for($row = 0; $row < 4; $row++){
-//    echo "<tr>";
-//    for($cell = 0; $cell < 4; $cell++){
-//        echo "<td>";
-//        echo "<input id=".$cmptIndice."cache value=\"".$tab16Images[$cmptIndice]->getChemin()."\" >";
-//        $cmptIndice++;
-//        echo "</td>";
-//    }
-//    echo "</tr>";
-//}
-//echo "</table>";
-//echo "</div>";
