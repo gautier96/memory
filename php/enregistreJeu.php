@@ -6,6 +6,7 @@ use memory\Entity\Partie;
 use memory\Entity\Image;
 use \memory\Entity\Choisir;
 
+//Attention à toujours démarrer la session après l'appel des classes sinon elle ne pourra pas recupérer correctemeent les tableaux d'objets passés en session
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
