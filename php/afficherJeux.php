@@ -1,13 +1,15 @@
 <?php
-//Verifie si la session a été démarrée et la démarre si réponse = non
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
 require_once(dirname(__FILE__) . '../../global.php');
 
 use memory\Entity\Choisir;
 use memory\Entity\Image;
 use memory\Entity\Partie;
+use memory\Entity\ChoisirController;
+
+//Verifie si la session a été démarrée et la démarre si réponse = non
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $daoImage = $entityManager->getRepository(Image::class);
 //Je recupère toutes mes images
@@ -60,3 +62,5 @@ for($row = 0; $row < 4; $row++){
 echo "</table>";
 echo "</div>";
 echo 'Nombre de tour <input id="nbrTour" type="texte" value="0" readonly>';
+
+include_once '../../memory/PHP/getMostMostFrequentImage.php';
