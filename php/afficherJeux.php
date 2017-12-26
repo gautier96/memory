@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . '../../global.php');
+require_once (dirname(__FILE__). '/entitysController.php');
 
 use memory\Entity\Choisir;
 use memory\Entity\Image;
@@ -61,6 +62,10 @@ for($row = 0; $row < 4; $row++){
 }
 echo "</table>";
 echo "</div>";
-echo 'Nombre de tour <input id="nbrTour" type="texte" value="0" readonly>';
-
-include_once '../../memory/PHP/getMostMostFrequentImage.php';
+echo 'Nombre de tour <input id="nbrTour" type="texte" value="0" readonly><br>';
+$imageLaPlusSouventTiree = getMostFrequentImageChosen();
+echo 'La carte la plus souvent tirées est la carte numéro : ';
+echo $imageLaPlusSouventTiree[0]['numImage'];
+echo ' tirée ';
+echo $imageLaPlusSouventTiree[0]['nbr'];
+echo ' fois';
