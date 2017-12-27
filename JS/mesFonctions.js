@@ -110,7 +110,7 @@ function resolveAfter2Seconds(x) {
 
 function testPseudo() {
     var pseudo = $("#lg_username").val();
-    if (pseudo != "") {
+    if (pseudo !== "") {
         $.ajax
                 (
                         {

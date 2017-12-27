@@ -18,15 +18,32 @@ class Partie {
 
     /**
      * @ORM\ID
-     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $idPartie;
+    
+    /**
+     * @ORM\ID
+     * @ORM\Column(type="integer")
+     */
+    private $idJoueur;
 
     /**
      * @ORM\Column(type="integer")
      */
     private $nbCoups;
+    
+    function setIdPartie($idPartie) {
+        $this->idPartie = $idPartie;
+    }
+    
+    function getIdJoueur() {
+        return $this->idJoueur;
+    }
+
+    function setIdJoueur($idJoueur) {
+        $this->idJoueur = $idJoueur;
+    }
 
     function getIdPartie() {
         return $this->idPartie;

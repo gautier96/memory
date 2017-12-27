@@ -1,7 +1,9 @@
 <?php
 
 use memory\Entity\Choisir;
+use memory\Entity\Partie;
 
+//Récupère l'image la plus souvent tirée au sort par l'application dans la table choisir
 function getMostFrequentImageChosen() {
     require(dirname(__FILE__) . '../../global.php');
     $qb = $entityManager->createQueryBuilder();
@@ -15,3 +17,15 @@ function getMostFrequentImageChosen() {
     $query = $qb->getQuery();
     return $query->getResult();
 }
+
+//Récupère la l'id de la dernière partie dans la table partie
+function getLastPartie(){
+    require(dirname(__FILE__) . '../../global.php');
+    $qb = $entityManager->createQueryBuilder();
+    //SELECT MAX(`idPartie`) FROM `partie`
+    $qb->select('MAX(u.idPartie) as idDernierePartie')
+            ->from(Partie::class, 'u');
+    $query = $qb->getQuery();
+    return $query->getResult();
+}
+
