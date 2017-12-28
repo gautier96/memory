@@ -68,4 +68,7 @@ echo 'La carte la plus souvent tirées est la carte numéro : ';
 echo $imageLaPlusSouventTiree[0]['numImage'];
 echo ' tirée ';
 echo $imageLaPlusSouventTiree[0]['nbr'];
-echo ' fois';
+echo ' fois <br>';
+$meilleur = getLeMeilleurJoueur();
+echo 'Le meilleur joueur est : '.$meilleur[0]['pseudo'];
+echo ' avec seulement '.$meilleur[0]['minNbCoup'].' coups necessaires pour finir une manche.';

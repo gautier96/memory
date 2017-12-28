@@ -2,6 +2,8 @@
 
 use memory\Entity\Choisir;
 use memory\Entity\Partie;
+use memory\Entity\Joueur;
+use Doctrine\ORM\Query\Expr\Join;
 
 //Récupère l'image la plus souvent tirée au sort par l'application dans la table choisir
 function getMostFrequentImageChosen() {
@@ -19,7 +21,7 @@ function getMostFrequentImageChosen() {
 }
 
 //Récupère la l'id de la dernière partie dans la table partie
-function getLastPartie(){
+function getLastPartie() {
     require(dirname(__FILE__) . '../../global.php');
     $qb = $entityManager->createQueryBuilder();
     //SELECT MAX(`idPartie`) FROM `partie`
@@ -29,3 +31,18 @@ function getLastPartie(){
     return $query->getResult();
 }
 
+function getLeMeilleurJoueur() {
+//SELECT joueur.pseudo, MIN(`nbCoups`) as "minNbCoup" FROM partie INNER JOIN joueur ON partie.idJoueurP = joueur.idJoueur 
+//GROUP BY pseudo ORDER BY minNbCoup ASC LIMIT 1    
+    require(dirname(__FILE__) . '../../global.php');
+    $qb = $entityManager->createQueryBuilder();
+    $qb->select('joueur.pseudo, MIN(partie.nbCoups) as minNbCoup')
+            ->from(Partie::class, 'partie')
+            ->innerJoin(Joueur::class, 'joueur', Join::WITH , 'partie.idJoueurP = joueur.idJoueur')
+            ->groupBy('joueur.pseudo')
+            ->orderBy('minNbCoup', 'ASC')
+            ->setMaxResults(1);
+    $query = $qb->getQuery();
+    return $query->getResult();
+  
+}

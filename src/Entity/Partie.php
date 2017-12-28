@@ -3,6 +3,8 @@
 namespace memory\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * Description of Partie
@@ -22,11 +24,13 @@ class Partie {
      */
     private $idPartie;
     
+    
     /**
-     * @ORM\ID
-     * @ORM\Column(type="integer")
+     * @ManyToOne(targetEntity="Joueur")
+     * @JoinColumn(name="idJoueurP", referencedColumnName="idJoueur")
      */
-    private $idJoueur;
+   
+    private $idJoueurP;
 
     /**
      * @ORM\Column(type="integer")
