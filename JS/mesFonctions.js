@@ -58,6 +58,8 @@ async function retournEtCheck(id) {
             $("#" + oldIDImage + "cache").hide();
             $("#" + oldIDImage).show();
             $("#nbrTour").val(parseInt($("#nbrTour").val()) + 1);
+            var derniereImageRetourne = localStorage.getItem("derniereImageRetourne");
+            $("#" + derniereImageRetourne).attr("onclick","retournEtCheck('"+oldIDImage+"')");
         } else {
             $('input[name="image"]:checked').each(function () {
                 $(this).remove();
@@ -66,6 +68,9 @@ async function retournEtCheck(id) {
         }
     } else {
         localStorage.setItem("OldIDImage", id);
+        $("#" + id + "check").attr("onclick","return false;");
+        var derniereImageRetourne = id + "check";
+        localStorage.setItem("derniereImageRetourne", derniereImageRetourne);
     }
     
 

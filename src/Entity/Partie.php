@@ -46,7 +46,7 @@ class Partie {
     }
 
     function setIdJoueur($idJoueur) {
-        $this->idJoueur = $idJoueur;
+        $this->idJoueurP = $idJoueur;
     }
 
     function getIdPartie() {
