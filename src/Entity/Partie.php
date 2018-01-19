@@ -42,7 +42,7 @@ class Partie {
     }
     
     function getIdJoueur() {
-        return $this->idJoueur;
+        return $this->idJoueurP;
     }
 
     function setIdJoueur($idJoueur) {
