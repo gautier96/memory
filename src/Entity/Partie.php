@@ -26,6 +26,7 @@ class Partie {
     
     
     /**
+     * @ORM\Column(type="integer")
      * @ManyToOne(targetEntity="Joueur")
      * @JoinColumn(name="idJoueurP", referencedColumnName="idJoueur")
      */
